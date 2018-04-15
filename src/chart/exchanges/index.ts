@@ -7,8 +7,8 @@ import * as upbit from './upbit';
 export const Interface = IF;
 
 export function factoryApi(exchange: string): IF.IChartUdfIf {
-  switch (exchange) {
-    case 'upbit':
+  switch (exchange.toUpperCase()) {
+    case 'UPBIT':
       return new upbit.Api();
   }
 
