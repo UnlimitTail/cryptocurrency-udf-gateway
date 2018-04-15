@@ -1,16 +1,16 @@
 import { expect } from 'chai';
 import 'mocha';
-import * as Lib from '../src/index';
+import * as Lib from '../src';
 
 describe('upbit', () => {
 
   it('history', () => {
-    const api = Lib.default.chart.default.exchanges.factoryApi('upbit');
+    const api = Lib.Chart.Exchanges.factoryApi('upbit');
 
-    api.history(new Lib.default.chart.default.exchanges.Interface.ChartHistoryParam({
+    api.history(new Lib.Chart.Exchanges.Interface.ChartHistoryParam({
         base: 'BTC',
         quote: 'KRW',
-        resolution: Lib.default.chart.default.exchanges.Interface.ChartHistoryResolutions.Minute,
+        resolution: Lib.Chart.Exchanges.Interface.ChartHistoryResolutions.Minute,
         resolutionValue: 30,
     }), (err: any, result: any): void => {
         // console.log('result', err, result);

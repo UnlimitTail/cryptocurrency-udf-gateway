@@ -1,5 +1,5 @@
-import * as exchanges from './exchanges';
+import * as Exchanges from './exchanges';
 
 export default {
-  exchanges,
+    Exchanges,
 };

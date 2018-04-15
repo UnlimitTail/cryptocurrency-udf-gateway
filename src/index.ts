@@ -1,5 +1,1 @@
-import * as chart from './chart';
-
-export default {
-    chart,
-};
+export { default as Chart } from './chart';
