@@ -13,9 +13,11 @@ export default function(param: HistoryParam, callback: (error: any, result: any)
 
     const historyParam = new Exchanges.Interface.ChartHistoryParam({
         base,
+        from: param.from,
         quote,
         resolution: rs,
         resolutionValue: parseInt(rsValue, 10),
+        to: param.to,
     });
 
     const api = Exchanges.factoryApi(exchange);
