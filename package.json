@@ -1,5 +1,5 @@
 {
-  "name": "cryptocurrency-udf",
+  "name": "cryptocurrency-udf-gateway",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -15,11 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/madtail/project-p-udf.git"
+    "url": "https://github.com/UnlimitTail/cryptocurrency-udf-gateway.git"
   },
   "author": "yangga",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/madtail/project-p-udf#readme",
+  "license": "MIT",
+  "homepage": "https://github.com/UnlimitTail/cryptocurrency-udf-gateway#readme",
   "devDependencies": {
     "@types/assert": "0.0.31",
     "@types/chai": "^4.1.2",
