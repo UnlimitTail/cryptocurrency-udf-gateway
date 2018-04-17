@@ -6,11 +6,12 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "devwatch": "tsc -w",
-    "transpile": "tsc",
+  "scripts": {    
     "test": "mocha -r ts-node/register test/**/*.ts",
-    "postinstall": "tsc"
+    "prepublish": "npm run release",
+    "release": "npm run transpile",
+    "devwatch": "tsc -w",
+    "transpile": "tsc"
   },
   "repository": {
     "type": "git",
