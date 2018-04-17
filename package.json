@@ -1,12 +1,12 @@
 {
-  "name": "project-p-udf",
+  "name": "cryptocurrency-udf",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "directories": {
     "test": "test"
   },
-  "scripts": {    
+  "scripts": {
     "test": "mocha -r ts-node/register test/**/*.ts",
     "prepublish": "npm run release",
     "release": "npm run transpile",
@@ -29,14 +29,14 @@
     "chai": "^4.1.2",
     "mocha": "^5.1.0",
     "ts-node": "^5.0.1",
-    "tslint": "^5.9.1"
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1"
   },
   "dependencies": {
     "assert": "^1.4.1",
     "es6-promise": "^4.2.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.5",
-    "typescript": "^2.8.1",
     "whatwg-fetch": "^2.0.4"
   }
 }
