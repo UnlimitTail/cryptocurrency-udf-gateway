@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha -r ts-node/register test/**/*.ts",
-    "prepublish": "npm run release",
+    "prepare": "npm run release",
     "release": "npm run transpile",
     "devwatch": "tsc -w",
     "transpile": "tsc"
