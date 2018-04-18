@@ -27,7 +27,7 @@ export default function(symbol: string, callback: (error: any, result: any) => v
         'name': base.toUpperCase(),
         'pointvalue': 1,
         'pricescale': 100000000,
-        'session': '0930-1630',
+        'session': '0000-2400',
         'supported_resolutions': ['1M', '5M', '15M', '30M', '60M', 'D', '1W'],
         'ticker': symbol.toUpperCase(),
         'timezone': 'America/New_York',
