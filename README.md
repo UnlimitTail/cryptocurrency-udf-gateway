@@ -16,33 +16,5 @@
 
 > npm i -S cryptocurrency-udf-gateway
 
-## Usage for express
-
-```javascript
-const CUG = require('cryptocurrency-udf-gateway');
-const EMPTY_HISTORY = {t: [], o: [], h: [], l: [], c: [], v: [], s: 'ok'};
-
-// [Sample]
-// symbol : UPBIT:BTC-KRW
-// resolution : D
-router.get('/', function(req, res, next) {
-  const {
-    symbol,
-    resolution
-  } = req.query;
-
-  const param = new CUG.Chart.Helpers.HistoryParam({
-    symbol,
-    resolution
-  });
-
-  CUG.Chart.Helpers.history(param, function(err, result){
-    if (err){
-      res.json(EMPTY_HISTORY);
-    } else {
-      res.json(result);
-    }
-  })
-});
-
-```
+## Sample
+> routes code in https://github.com/UnlimitTail/cryptocurrency-udf-server
