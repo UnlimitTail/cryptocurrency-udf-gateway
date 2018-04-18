@@ -22,7 +22,7 @@ export default class History {
           this.to = to;
 
           const begin = Math.floor(from / interval) * interval;
-          const end = Math.floor(to / interval) * interval + 1;
+          const end = (Math.floor(to / interval) + 1) * interval;
           for (let t = begin; t < end; t = t + interval) {
             this.t.push(t);
           }

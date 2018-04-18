@@ -20,7 +20,7 @@ export default function(symbol: string, callback: (error: any, result: any) => v
         'description': symbol,
         'exchange-listed': exchange.toUpperCase(),
         'exchange-traded': exchange.toUpperCase(),
-        'has_intraday': false,
+        'has_intraday': true,
         'has_no_volume': false,
         'minmov': 1,
         'minmov2': 0,
@@ -28,10 +28,10 @@ export default function(symbol: string, callback: (error: any, result: any) => v
         'pointvalue': 1,
         'pricescale': 100000000,
         'session': '0000-2400',
-        'supported_resolutions': ['1M', '5M', '15M', '30M', '60M', 'D', '1W'],
+        'supported_resolutions': [ '1', '5', '10', '30', '60', '240', '360', 'D', 'W', 'M' ],
         'ticker': symbol.toUpperCase(),
         'timezone': 'America/New_York',
-        'type': 'stock',
+        'type': 'bitcoin',
       };
 
     callback(null, result);

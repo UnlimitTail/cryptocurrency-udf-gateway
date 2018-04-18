@@ -1,7 +1,7 @@
 export enum ChartHistoryResolutions {
   None = '_',
   Day = 'D',
-  Minute = 'M',
+  Minute = '',
 }
 
 export default class ChartHistoryParam {

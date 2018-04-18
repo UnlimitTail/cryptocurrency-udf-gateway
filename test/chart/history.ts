@@ -26,7 +26,7 @@ describe('chart', () => {
     it('helper', () => {
       const param = new Lib.Chart.Helpers.HistoryParam({
         from: Math.floor(new Date().getTime() / 1000) - 60 * 60 * 24,
-        resolution: '30M',
+        resolution: 'D',
         symbol: 'UPBIT:BTC-KRW',
         to: Math.floor(new Date().getTime() / 1000),
       });
