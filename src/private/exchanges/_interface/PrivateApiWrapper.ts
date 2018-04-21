@@ -1,8 +1,11 @@
 import { BalancesNone, IBalances } from './IBalance';
+import IPrivateApi from './IPrivateApi';
 import IPrivateApiInitParam from './IPrivateApiInitParam';
 import { ITradeHistories, TradeHistoriesNone } from './ITradeHistory';
 
-export default abstract class PrivateApiDef {
+export default abstract class PrivateApiWrapper {
+    constructor(private readonly mod: IPrivateApi) {}
+
     public initialize(param: IPrivateApiInitParam, callback: (error: any) => void): void {
         this.initializeAsync(param)
         .then((result: History) => {
@@ -12,7 +15,9 @@ export default abstract class PrivateApiDef {
             callback(error);
         });
     }
-    public abstract initializeAsync(param: IPrivateApiInitParam): Promise<any>;
+    public initializeAsync(param: IPrivateApiInitParam): Promise<any> {
+        return this.mod.initializeAsync(param);
+    }
 
     public getBalances(callback: (error: any, result: IBalances) => void): void {
         this.getBalancesAsync()
@@ -23,7 +28,9 @@ export default abstract class PrivateApiDef {
             callback(error, new BalancesNone());
         });
     }
-    public abstract getBalancesAsync(): Promise<IBalances>;
+    public getBalancesAsync(): Promise<IBalances> {
+        return this.mod.getBalancesAsync();
+    }
 
     public getTradeHistoies(callback: (error: any, result: ITradeHistories) => void): void {
         this.getTradeHistoiesAsync()
@@ -34,5 +41,7 @@ export default abstract class PrivateApiDef {
             callback(error, new TradeHistoriesNone());
         });
     }
-    public abstract getTradeHistoiesAsync(): Promise<ITradeHistories>;
+    public getTradeHistoiesAsync(): Promise<ITradeHistories> {
+        return this.mod.getTradeHistoiesAsync();
+    }
 }

@@ -1,12 +1,12 @@
 import { ErrorPromise } from '../../../util';
 import {
   ChartHistoryParam,
-  ChartUdfDef,
   ExchangeCfg,
+  IChartUdf,
   IHistory,
 } from '../_interface';
 
-export class Api extends ChartUdfDef {
+export class Api implements IChartUdf {
   public config(): ExchangeCfg {
     assert(0, "it shouldn't be called");
     return new ExchangeCfg({

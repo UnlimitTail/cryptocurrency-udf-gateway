@@ -2,9 +2,9 @@ import { ErrorPromise, getAsync } from '../../../util';
 import {
   ChartHistoryParam,
   ChartHistoryResolutions,
-  ChartUdfDef,
   ExchangeCfg,
   History,
+  IChartUdf,
   IHistory,
 } from '../_interface';
 
@@ -17,7 +17,7 @@ interface IUpbitCandle {
   candleAccTradeVolume: number;
 }
 
-export class Api extends ChartUdfDef {
+export class Api implements IChartUdf {
   public config(): ExchangeCfg {
     return new ExchangeCfg({
       desc: 'UPBIT',
