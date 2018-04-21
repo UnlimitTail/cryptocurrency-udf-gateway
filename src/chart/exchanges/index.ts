@@ -19,7 +19,7 @@ export function getExchangeConfigs(): IF.ExchangeCfg[] {
 
 export const Interface = IF;
 
-export function factoryApi(exchange: string): IF.IChartUdfIf {
+export function factoryApi(exchange: string): IF.ChartUdfDef {
   switch (exchange.toUpperCase()) {
     case 'UPBIT':
       return new upbit.Api();

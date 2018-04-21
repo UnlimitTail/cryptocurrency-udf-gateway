@@ -1,12 +1,12 @@
+import { ErrorPromise } from '../../../util';
 import {
   ChartHistoryParam,
+  ChartUdfDef,
   ExchangeCfg,
-  History,
-  HistoryNone,
-  IChartUdfIf,
+  IHistory,
 } from '../_interface';
 
-export class Api implements IChartUdfIf {
+export class Api extends ChartUdfDef {
   public config(): ExchangeCfg {
     assert(0, "it shouldn't be called");
     return new ExchangeCfg({
@@ -16,11 +16,8 @@ export class Api implements IChartUdfIf {
     });
   }
 
-  public history(
-    param: ChartHistoryParam,
-    callback: (error: any, result: History) => void,
-  ): void {
+  public historyAsync(param: ChartHistoryParam): Promise<IHistory> {
     assert(0, "it shouldn't be called");
-    callback(new Error('it called invalid exchange\'s history'), new HistoryNone());
+    return new ErrorPromise<IHistory>('it called invalid exchange\'s history');
   }
 }

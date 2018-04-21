@@ -16,7 +16,7 @@ describe('chart', () => {
           resolution: Lib.Chart.Exchanges.Interface.ChartHistoryResolutions.Minute,
           resolutionValue: 30,
           to: Math.floor(new Date().getTime() / 1000),
-      }), (err: any, result: Lib.Chart.Exchanges.Interface.History): void => {
+      }), (err: any, result: Lib.Chart.Exchanges.Interface.IHistory): void => {
           // console.log('result', err, result);
           expect(err).to.equal(null);
           expect(result.c.length).greaterThan(0);
@@ -31,7 +31,7 @@ describe('chart', () => {
         to: Math.floor(new Date().getTime() / 1000),
       });
 
-      Lib.Chart.Helpers.history(param, (err: any, result: Lib.Chart.Exchanges.Interface.History): void => {
+      Lib.Chart.Helpers.history(param, (err: any, result: Lib.Chart.Exchanges.Interface.IHistory): void => {
         // console.log('result', err, result);
         expect(err).to.equal(null);
         expect(result.c.length).greaterThan(0);

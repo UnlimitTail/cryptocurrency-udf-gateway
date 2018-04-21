@@ -1,6 +1,6 @@
 import 'isomorphic-fetch';
 
-export function get(url: string): Promise<any> {
+export function getAsync(url: string): Promise<any> {
     return fetch(url, {
         cache: 'no-cache',
         credentials: 'same-origin',
@@ -15,7 +15,7 @@ export function get(url: string): Promise<any> {
       });
 }
 
-export function post(url: string, param: any): Promise<any> {
+export function postAsync(url: string, param: any): Promise<any> {
     return fetch(url, {
         body: JSON.stringify(param),
         cache: 'no-cache',

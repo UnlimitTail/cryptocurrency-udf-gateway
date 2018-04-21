@@ -1,21 +1,12 @@
-import { get } from '../../../util';
+import { ErrorPromise, getAsync } from '../../../util';
 import {
   ChartHistoryParam,
   ChartHistoryResolutions,
+  ChartUdfDef,
   ExchangeCfg,
   History,
-  HistoryNone,
-  IChartUdfIf,
+  IHistory,
 } from '../_interface';
-
-// function convertTo12am(t: number) {
-//   if (2000000000 < t) {
-//     t = Math.floor(t / 1000);
-//   }
-
-//   t = Math.floor(t / 86400) * 86400;
-//   return t;
-// }
 
 interface IUpbitCandle {
   openingPrice: number;
@@ -26,7 +17,7 @@ interface IUpbitCandle {
   candleAccTradeVolume: number;
 }
 
-export class Api implements IChartUdfIf {
+export class Api extends ChartUdfDef {
   public config(): ExchangeCfg {
     return new ExchangeCfg({
       desc: 'UPBIT',
@@ -35,10 +26,7 @@ export class Api implements IChartUdfIf {
     });
   }
 
-  public history(
-    param: ChartHistoryParam,
-    callback: (error: any, result: History) => void,
-  ): void {
+  public historyAsync(param: ChartHistoryParam): Promise<IHistory> {
     const {
       from,
       resolutionValue,
@@ -57,12 +45,12 @@ export class Api implements IChartUdfIf {
       interval = 60 * resolutionValue;
       url = `https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/${resolutionValue}?code=CRIX.UPBIT.${quote}-${base}&count=200&ciqrandom=${rnd}`;
     } else {
-      return callback(new Error('invalid resolution'), new HistoryNone());
+      return new ErrorPromise<IHistory>('invalid resolution');
     }
 
-    get(url)
+    return getAsync(url)
     .then((res: Response): any => res.json())
-    .then((hitories: IUpbitCandle[]): History => {
+    .then((hitories: IUpbitCandle[]): IHistory => {
       const history = new History(interval, from, to);
       hitories.reverse().map((h: IUpbitCandle) => {
         const t = Math.floor(h.timestamp / 1000);
@@ -77,9 +65,6 @@ export class Api implements IChartUdfIf {
 
       });
       return history;
-    })
-    .then((res: History) => callback(null, res))
-    .catch((err: any) => callback(err, new HistoryNone()))
-    ;
+    });
   }
 }

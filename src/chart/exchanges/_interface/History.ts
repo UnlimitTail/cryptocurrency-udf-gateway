@@ -1,8 +1,10 @@
+import IHistory from './IHistory';
+
 function validate(src: number) {
     return src ? src : 0;
 }
 
-export default class History {
+export default class History implements IHistory {
     public c: number[] = [];
     public h: number[] = [];
     public l: number[] = [];
@@ -11,16 +13,8 @@ export default class History {
     public v: number[] = [];
     public s: string = 'ok';
 
-    private readonly interval: number = 0;
-    private readonly from: number = 0;
-    private readonly to: number = 0;
-
-    constructor(interval: number, from: number, to: number) {
+    constructor(private interval: number, private from: number, private to: number) {
         if (interval !== 0 && from !== 0 && to !== 0) {
-          this.interval = interval;
-          this.from = from;
-          this.to = to;
-
           const begin = Math.floor(from / interval) * interval;
           const end = (Math.floor(to / interval) + 1) * interval;
           for (let t = begin; t < end; t = t + interval) {
