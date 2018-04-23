@@ -3,20 +3,24 @@ import IPrivateApi from './IPrivateApi';
 import IPrivateApiInitParam from './IPrivateApiInitParam';
 import { ITradeHistories, TradeHistoriesNone } from './ITradeHistory';
 
-export default abstract class PrivateApiWrapper {
-    constructor(private readonly mod: IPrivateApi) {}
+export default class PrivateApiWrapper {
+    constructor(private readonly mod: IPrivateApi, protected readonly config: IPrivateApiInitParam) {}
 
-    public initialize(param: IPrivateApiInitParam, callback: (error: any) => void): void {
-        this.initializeAsync(param)
-        .then((result: History) => {
+    public initialize(callback: (error: any) => void): void {
+        this.initializeAsync()
+        .then((result: boolean) => {
+            if (!result) {
+                throw new Error('failed to initializeAsync');
+            }
+
             callback(null);
         })
         .catch((error: any) => {
             callback(error);
         });
     }
-    public initializeAsync(param: IPrivateApiInitParam): Promise<any> {
-        return this.mod.initializeAsync(param);
+    public initializeAsync(): Promise<boolean> {
+        return this.mod.initializeAsync(this.config);
     }
 
     public getBalances(callback: (error: any, result: IBalances) => void): void {
