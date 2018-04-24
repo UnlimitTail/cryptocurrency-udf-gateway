@@ -1,7 +1,11 @@
-import History from './History';
+import IHistory from './IHistory';
 
-export default class HistoryNone extends History {
-    constructor() {
-        super(0, 0, 0);
-    }
+export default class HistoryNone implements IHistory {
+    public c: number[] = [];
+    public h: number[] = [];
+    public l: number[] = [];
+    public o: number[] = [];
+    public t: number[] = [];
+    public v: number[] = [];
+    public s: string = 'ok';
 }

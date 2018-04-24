@@ -19,12 +19,16 @@ export function getExchangeConfigs(): IF.ExchangeCfg[] {
 
 export const Interface = IF;
 
-export function factoryApi(exchange: string): IF.IChartUdfIf {
-  switch (exchange.toUpperCase()) {
-    case 'UPBIT':
-      return new upbit.Api();
-  }
+export function factoryApi(exchange: string): IF.ChartUdfWrapper {
+  const mod: IF.IChartUdf = (() => {
+    switch (exchange.toUpperCase()) {
+      case 'UPBIT':
+        return new upbit.Api();
+    }
 
-  assert(0, `invalid exchange - ${exchange}`);
-  return new _invalid.Api();
+    assert(0, `invalid exchange - ${exchange}`);
+    return new _invalid.Api();
+  })();
+
+  return new IF.ChartUdfWrapper(mod);
 }
