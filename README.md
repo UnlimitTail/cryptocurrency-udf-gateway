@@ -24,6 +24,7 @@
 
 ### Private API
 * Exchanges
+    * bithumb (https://bithumb.com/)
 
 ## Sample
 > routes code in https://github.com/UnlimitTail/cryptocurrency-udf-server
