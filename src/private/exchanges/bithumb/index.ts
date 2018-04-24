@@ -45,8 +45,4 @@ export class Api implements IPrivateApi {
         })
         ;
     }
-
-    public getTradeHistoiesAsync(): Promise<ITradeHistories> {
-        return new Promise<ITradeHistories>(() => ({}));
-    }
 }

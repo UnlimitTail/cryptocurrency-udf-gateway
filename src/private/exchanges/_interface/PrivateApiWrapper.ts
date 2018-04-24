@@ -35,17 +35,4 @@ export default class PrivateApiWrapper {
     public getBalancesAsync(): Promise<IBalances> {
         return this.mod.getBalancesAsync();
     }
-
-    public getTradeHistoies(callback: (error: any, result: ITradeHistories) => void): void {
-        this.getTradeHistoiesAsync()
-        .then((result: ITradeHistories) => {
-            callback(null, result);
-        })
-        .catch((error: any) => {
-            callback(error, new TradeHistoriesNone());
-        });
-    }
-    public getTradeHistoiesAsync(): Promise<ITradeHistories> {
-        return this.mod.getTradeHistoiesAsync();
-    }
 }

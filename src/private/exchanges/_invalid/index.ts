@@ -18,11 +18,4 @@ export class Api implements IPrivateApi {
           reject('it should not called here');
         });
     }
-
-    public getTradeHistoiesAsync(): Promise<ITradeHistories> {
-        assert('it should not called here');
-        return new Promise<ITradeHistories>((resolve, reject) => {
-          reject('it should not called here');
-        });
-    }
 }
