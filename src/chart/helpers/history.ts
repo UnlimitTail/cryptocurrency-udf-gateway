@@ -1,4 +1,4 @@
-import HistoryParam from './HistoryParam';
+import HistoryParam from './historyParam';
 
 import * as Exchanges from '../exchanges';
 
